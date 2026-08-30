@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Plus, Sparkles, TrendingUp } from 'lucide-react';
@@ -21,21 +21,21 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="app-content animate-fade-in">
+      <div className="app-content animate-fade-in" style={{ paddingBottom: '110px' }}>
         {/* Hero Banner */}
         <div style={{
           background: 'linear-gradient(135deg, #E85A1D 0%, #B83D0D 100%)',
-          borderRadius: '32px',
-          padding: '40px 36px',
+          borderRadius: '24px',
+          padding: '24px 20px',
           color: 'white',
-          marginBottom: '32px',
+          marginBottom: '24px',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '16px'
+          gap: '12px'
         }}>
           {/* Dot pattern overlay */}
           <div style={{
@@ -44,18 +44,18 @@ export default function HomePage() {
             backgroundSize: '24px 24px'
           }} />
 
-          <div style={{ maxWidth: '560px', zIndex: 2 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-              <Sparkles size={16} />
-              <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '4px 12px', borderRadius: '12px', fontSize: '12px', fontWeight: '700' }}>
+          <div style={{ maxWidth: '500px', zIndex: 2 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+              <Sparkles size={14} />
+              <span style={{ backgroundColor: 'rgba(255,255,255,0.2)', padding: '3px 10px', borderRadius: '10px', fontSize: '11px', fontWeight: '800' }}>
                 NSUK Campus Delivery
               </span>
             </div>
-            <h1 style={{ fontSize: '36px', fontWeight: '900', lineHeight: '1.15', marginBottom: '12px', letterSpacing: '-0.02em' }}>
+            <h1 style={{ fontSize: '26px', fontWeight: '900', lineHeight: '1.2', marginBottom: '8px', letterSpacing: '-0.02em' }}>
               Hungry on Campus,<br />{user.name.split(' ')[0]}? 🍛
             </h1>
-            <p style={{ fontSize: '15px', opacity: 0.9, marginBottom: '24px', lineHeight: '1.5' }}>
-              Order Jollof Rice, Pounded Yam, Suya, Shawarma & Groceries delivered to your hostel or lecture hall in under 30 mins.
+            <p style={{ fontSize: '13px', opacity: 0.9, marginBottom: '18px', lineHeight: '1.4' }}>
+              Order Jollof Rice, Suya, Shawarma & Groceries delivered to your hostel in under 30 mins.
             </p>
             <button
               onClick={() => router.push('/restaurants')}
@@ -63,28 +63,28 @@ export default function HomePage() {
                 backgroundColor: '#1E1E22',
                 color: 'white',
                 border: 'none',
-                padding: '14px 28px',
-                borderRadius: '20px',
-                fontSize: '15px',
+                padding: '12px 22px',
+                borderRadius: '16px',
+                fontSize: '14px',
                 fontWeight: '800',
                 cursor: 'pointer',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.25)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.25)'
               }}
             >
               Order Now →
             </button>
           </div>
 
-          <div style={{ fontSize: '90px', zIndex: 1, lineHeight: 1, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }}>
-            🍛🌯🥤
+          <div style={{ fontSize: '56px', zIndex: 1, lineHeight: 1, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))' }}>
+            🍛🌯
           </div>
         </div>
 
         {/* Featured Offers */}
-        <div style={{ marginBottom: '36px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <h2 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-main)' }}>Featured Offers</h2>
-            <Link href="/restaurants" style={{ color: 'var(--primary-orange)', fontWeight: '700', fontSize: '14px', textDecoration: 'none' }}>
+        <div style={{ marginBottom: '28px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', padding: '0 4px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: '900', color: 'var(--text-main)' }}>Featured Offers</h2>
+            <Link href="/restaurants" style={{ color: 'var(--primary-orange)', fontWeight: '800', fontSize: '13px', textDecoration: 'none' }}>
               View all stores →
             </Link>
           </div>
@@ -95,24 +95,24 @@ export default function HomePage() {
               <div style={{
                 background: '#1C1C1E',
                 color: 'white',
-                borderRadius: '24px',
-                padding: '24px',
+                borderRadius: '20px',
+                padding: '18px',
                 display: 'flex',
                 alignItems: 'center',
-                width: '300px',
-                gap: '16px',
+                width: '260px',
+                gap: '14px',
                 boxShadow: 'var(--shadow-md)',
                 flexShrink: 0
               }}>
                 <div style={{
-                  width: '64px', height: '64px', borderRadius: '50%',
+                  width: '52px', height: '52px', borderRadius: '50%',
                   backgroundColor: '#E85A1D',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '30px', flexShrink: 0
+                  fontSize: '26px', flexShrink: 0
                 }}>🍛</div>
                 <div>
-                  <p style={{ fontSize: '12px', opacity: 0.7, marginBottom: '2px' }}>Mama Cass Bukka</p>
-                  <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'white' }}>₦500 OFF</h3>
+                  <p style={{ fontSize: '11px', opacity: 0.7, marginBottom: '2px', fontWeight: '600' }}>Mama Cass Bukka</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: '800', color: 'white' }}>₦500 OFF</h3>
                   <p style={{ fontSize: '11px', opacity: 0.6, marginTop: '2px' }}>On Jollof Rice orders</p>
                 </div>
               </div>
@@ -123,24 +123,24 @@ export default function HomePage() {
               <div style={{
                 background: 'linear-gradient(135deg, #E85A1D 0%, #B83D0D 100%)',
                 color: 'white',
-                borderRadius: '24px',
-                padding: '24px',
+                borderRadius: '20px',
+                padding: '18px',
                 display: 'flex',
                 alignItems: 'center',
-                width: '300px',
-                gap: '16px',
+                width: '260px',
+                gap: '14px',
                 boxShadow: 'var(--shadow-md)',
                 flexShrink: 0
               }}>
                 <div style={{
-                  width: '64px', height: '64px', borderRadius: '50%',
+                  width: '52px', height: '52px', borderRadius: '50%',
                   backgroundColor: 'rgba(255,255,255,0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '30px', flexShrink: 0
+                  fontSize: '26px', flexShrink: 0
                 }}>🌯</div>
                 <div>
-                  <p style={{ fontSize: '12px', opacity: 0.9, marginBottom: '2px' }}>Mars Cafe</p>
-                  <h3 style={{ fontSize: '20px', fontWeight: '800' }}>Free Delivery</h3>
+                  <p style={{ fontSize: '11px', opacity: 0.9, marginBottom: '2px', fontWeight: '600' }}>Mars Cafe</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: '800' }}>Free Delivery</h3>
                   <p style={{ fontSize: '11px', opacity: 0.8, marginTop: '2px' }}>On orders above ₦3,000</p>
                 </div>
               </div>
@@ -150,25 +150,25 @@ export default function HomePage() {
             <Link href="/restaurant/4u-supermarket" style={{ display: 'block', textDecoration: 'none' }}>
               <div style={{
                 background: 'linear-gradient(135deg, #FEE89E 0%, #FDD56A 100%)',
-                borderRadius: '24px',
-                padding: '24px',
+                borderRadius: '20px',
+                padding: '18px',
                 display: 'flex',
                 alignItems: 'center',
-                width: '300px',
-                gap: '16px',
+                width: '260px',
+                gap: '14px',
                 boxShadow: 'var(--shadow-md)',
                 flexShrink: 0
               }}>
                 <div style={{
-                  width: '64px', height: '64px', borderRadius: '50%',
-                  border: '3px solid #E85A1D',
+                  width: '52px', height: '52px', borderRadius: '50%',
+                  border: '2.5px solid #E85A1D',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontWeight: '900', fontSize: '26px', color: '#E85A1D',
+                  fontWeight: '900', fontSize: '20px', color: '#E85A1D',
                   fontFamily: 'Georgia, serif', fontStyle: 'italic', flexShrink: 0
                 }}>4U</div>
                 <div>
-                  <p style={{ fontSize: '12px', color: '#7A6000', marginBottom: '2px', fontWeight: '600' }}>4U Supermarket</p>
-                  <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#3D2F00' }}>10% OFF</h3>
+                  <p style={{ fontSize: '11px', color: '#7A6000', marginBottom: '2px', fontWeight: '600' }}>4U Supermarket</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: '800', color: '#3D2F00' }}>10% OFF</h3>
                   <p style={{ fontSize: '11px', color: '#7A6000', marginTop: '2px' }}>On all groceries today</p>
                 </div>
               </div>
@@ -176,53 +176,46 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Recommended Food & Groceries */}
-        <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <TrendingUp size={22} style={{ color: 'var(--primary-orange)' }} />
-            <h2 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-main)' }}>
+        {/* Recommended Food & Groceries Header */}
+        <div style={{ marginBottom: '14px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 4px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <TrendingUp size={20} style={{ color: 'var(--primary-orange)' }} />
+            <h2 style={{ fontSize: '20px', fontWeight: '900', color: 'var(--text-main)' }}>
               Recommended Food & Groceries
             </h2>
           </div>
         </div>
 
-        <div className="grid-responsive" style={{ marginBottom: '40px' }}>
+        {/* Recommended Grid */}
+        <div className="grid-responsive" style={{ paddingBottom: '30px' }}>
           {recommended.map(({ item, restaurantId, restaurantName }) => (
             <div
               key={item.id}
               className="animate-fade-in"
               style={{
                 backgroundColor: 'var(--bg-card)',
-                borderRadius: '24px',
-                padding: '16px',
+                borderRadius: '20px',
+                padding: '14px',
                 display: 'flex',
                 flexDirection: 'column',
                 boxShadow: 'var(--shadow-sm)',
                 border: '1px solid var(--border-color)',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                minHeight: '250px'
+                minHeight: '230px'
               }}
               onClick={() => router.push(`/product/${item.id}`)}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-              }}
             >
               {/* Emoji Food Image */}
               <div style={{
-                height: '110px',
-                borderRadius: '16px',
-                marginBottom: '12px',
+                height: '90px',
+                borderRadius: '14px',
+                marginBottom: '10px',
                 backgroundColor: 'var(--light-blue-light)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '52px',
+                fontSize: '44px',
                 flexShrink: 0
               }}>
                 {item.emoji || '🍽️'}
@@ -230,21 +223,22 @@ export default function HomePage() {
 
               {/* Store tag */}
               <span style={{
-                fontSize: '10px',
-                fontWeight: '700',
+                fontSize: '9.5px',
+                fontWeight: '800',
                 color: 'var(--primary-orange)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.04em',
-                marginBottom: '4px'
+                marginBottom: '3px'
               }}>
                 {restaurantName}
               </span>
 
               <h4 style={{
-                fontSize: '14px',
-                fontWeight: '700',
+                fontSize: '13.5px',
+                fontWeight: '800',
                 marginBottom: '4px',
                 color: 'var(--text-main)',
+                lineHeight: '1.25',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
@@ -253,7 +247,7 @@ export default function HomePage() {
                 {item.name}
               </h4>
 
-              <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '10px' }}>
+              <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginBottom: '10px', fontWeight: '500' }}>
                 {item.unit ? `per ${item.unit}` : 'per portion'}
               </p>
 
@@ -261,14 +255,14 @@ export default function HomePage() {
               <div style={{
                 marginTop: 'auto',
                 backgroundColor: 'var(--bg-primary)',
-                borderRadius: '20px',
-                padding: '6px 6px 6px 12px',
+                borderRadius: '16px',
+                padding: '6px 10px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 border: '1px solid var(--border-color)'
               }}>
-                <span style={{ fontSize: '15px', fontWeight: '800', color: 'var(--primary-orange)' }}>
+                <span style={{ fontSize: '14.5px', fontWeight: '900', color: 'var(--primary-orange)' }}>
                   ₦{item.price.toLocaleString()}
                 </span>
 
@@ -278,8 +272,8 @@ export default function HomePage() {
                     addToCart(item, restaurantId);
                   }}
                   style={{
-                    width: '34px',
-                    height: '34px',
+                    width: '32px',
+                    height: '32px',
                     borderRadius: '50%',
                     backgroundColor: 'var(--primary-orange)',
                     color: 'white',
@@ -288,11 +282,8 @@ export default function HomePage() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    flexShrink: 0,
-                    transition: 'transform 0.15s ease'
+                    flexShrink: 0
                   }}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                 >
                   <Plus size={16} />
                 </button>

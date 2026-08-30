@@ -51,45 +51,45 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className="app-content animate-fade-in" style={{ backgroundColor: 'var(--bg-primary)', paddingBottom: '90px' }}>
+      <div className="app-content animate-fade-in" style={{ backgroundColor: 'var(--bg-primary)', paddingBottom: '110px' }}>
         {/* Profile Header Block */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          padding: '40px 20px 30px 20px',
+          padding: '28px 20px 24px 20px',
           color: 'var(--text-main)',
           textAlign: 'center',
           backgroundColor: 'var(--bg-card)',
-          borderRadius: '32px',
-          marginBottom: '20px',
+          borderRadius: '24px',
+          marginBottom: '16px',
           boxShadow: 'var(--shadow-sm)',
           border: '1px solid var(--border-color)'
         }}>
           {/* Avatar with Orange Border */}
           <div style={{
-            width: '105px',
-            height: '105px',
+            width: '90px',
+            height: '90px',
             borderRadius: '50%',
             border: '3px solid var(--primary-orange)',
             padding: '3px',
-            marginBottom: '16px',
+            marginBottom: '12px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: 'var(--bg-primary)',
-            fontSize: '48px',
-            boxShadow: '0 8px 24px rgba(232, 90, 29, 0.2)'
+            fontSize: '42px',
+            boxShadow: '0 6px 20px rgba(232, 90, 29, 0.2)'
           }}>
             👨‍🎓
           </div>
 
-          <h2 style={{ fontSize: '24px', fontWeight: '800', letterSpacing: '-0.02em', color: 'var(--text-main)' }}>
+          <h2 style={{ fontSize: '22px', fontWeight: '800', letterSpacing: '-0.02em', color: 'var(--text-main)' }}>
             {user.name}
           </h2>
 
-          {/* Sub Badges (Orders count and rating matching Profile.jpg) */}
-          <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+          {/* Sub Badges */}
+          <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
             <div 
               onClick={() => router.push('/profile/orders')}
               style={{
@@ -97,11 +97,11 @@ export default function ProfilePage() {
                 color: 'white',
                 fontSize: '12px',
                 fontWeight: '700',
-                padding: '6px 14px',
-                borderRadius: '12px',
+                padding: '5px 12px',
+                borderRadius: '10px',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
+                gap: '5px',
                 cursor: 'pointer'
               }}
             >
@@ -114,11 +114,11 @@ export default function ProfilePage() {
               color: 'white',
               fontSize: '12px',
               fontWeight: '700',
-              padding: '6px 14px',
-              borderRadius: '12px',
+              padding: '5px 12px',
+              borderRadius: '10px',
               display: 'flex',
               alignItems: 'center',
-              gap: '6px'
+              gap: '5px'
             }}>
               <Star size={13} fill="white" />
               <span>{user.rating}</span>
@@ -126,23 +126,22 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* White / Dark Body Content Card with Rounded Corners matching Profile.jpg */}
+        {/* Profile Options List */}
         <div style={{
           backgroundColor: 'var(--bg-card)',
-          borderRadius: '32px',
-          padding: '30px 24px',
+          borderRadius: '24px',
+          padding: '24px 20px',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
           boxShadow: 'var(--shadow-sm)',
           border: '1px solid var(--border-color)'
         }}>
-          <h3 style={{ fontSize: '22px', fontWeight: '800', color: 'var(--text-main)', marginBottom: '20px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '800', color: 'var(--text-main)', marginBottom: '16px' }}>
             Profile Options
           </h3>
 
-          {/* Menu Items List matching Profile.jpg */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             {menuItems.map((item) => (
               <div
                 key={item.id}
@@ -151,17 +150,15 @@ export default function ProfilePage() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  padding: '16px 0',
+                  padding: '14px 0',
                   borderBottom: item.id === 'logout' ? 'none' : '1px solid var(--border-color)',
                   cursor: 'pointer',
                   transition: 'opacity 0.2s ease'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.opacity = '0.7'}
-                onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', color: item.danger ? '#FF3B30' : 'var(--text-main)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', color: item.danger ? '#FF3B30' : 'var(--text-main)' }}>
                   {item.icon}
-                  <span style={{ fontSize: '16px', fontWeight: '600' }}>{item.label}</span>
+                  <span style={{ fontSize: '15px', fontWeight: '600' }}>{item.label}</span>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -169,15 +166,15 @@ export default function ProfilePage() {
                     <span style={{
                       backgroundColor: 'var(--primary-orange-light)',
                       color: 'var(--primary-orange)',
-                      fontSize: '13px',
-                      fontWeight: '700',
-                      padding: '4px 10px',
+                      fontSize: '12px',
+                      fontWeight: '800',
+                      padding: '3px 8px',
                       borderRadius: '8px'
                     }}>
                       {item.badge}
                     </span>
                   )}
-                  {!item.danger && <ChevronRight size={20} style={{ color: 'var(--primary-orange)' }} />}
+                  {!item.danger && <ChevronRight size={18} style={{ color: 'var(--primary-orange)' }} />}
                 </div>
               </div>
             ))}

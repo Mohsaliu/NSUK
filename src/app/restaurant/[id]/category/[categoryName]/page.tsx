@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import { ShoppingBag, ArrowLeft, Search, Plus, Sparkles, Flame, Crown } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, Plus, Flame, Crown } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { BottomNav } from '@/components/BottomNav';
 import { RESTAURANTS, MenuItem } from '@/data/mockData';
@@ -51,21 +51,22 @@ export default function CategoryProductsPage() {
     displayedItems = premiumItems.length > 0 ? premiumItems : allCategoryItems;
   }
 
-  // Only Popular & Premium sub-filters
   const subFilters: ('Popular' | 'Premium')[] = ['Popular', 'Premium'];
 
   return (
     <>
-      <div className="app-content animate-fade-in" style={{ backgroundColor: 'var(--bg-primary)', paddingBottom: '60px' }}>
+      <div className="app-content animate-fade-in" style={{ backgroundColor: 'var(--bg-primary)', paddingBottom: '110px' }}>
         
         {/* Header */}
         <div className="header-light" style={{
           backgroundColor: 'var(--bg-card)',
           borderBottom: '1px solid var(--border-color)',
-          padding: '16px 20px',
+          padding: '14px 16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          borderRadius: '18px',
+          marginBottom: '16px'
         }}>
           <button
             onClick={() => router.push(`/restaurant/${storeId}`)}
@@ -75,11 +76,11 @@ export default function CategoryProductsPage() {
             <ArrowLeft size={18} />
           </button>
           
-          <h2 style={{ fontSize: '18px', fontWeight: '800', flex: 1, textAlign: 'center', margin: '0 10px', color: 'var(--text-main)' }}>
+          <h2 style={{ fontSize: '17px', fontWeight: '800', flex: 1, textAlign: 'center', margin: '0 8px', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {categoryName}
           </h2>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
             <Link href="/cart" style={{ position: 'relative', display: 'flex', alignItems: 'center', color: 'var(--text-main)' }}>
               <ShoppingBag size={22} />
               {totalCartItems > 0 && (
@@ -91,8 +92,8 @@ export default function CategoryProductsPage() {
           </div>
         </div>
 
-        {/* Sub-Filters Tabs — ONLY Popular & Premium */}
-        <div style={{ display: 'flex', gap: '12px', padding: '20px 20px 10px 20px' }}>
+        {/* Sub-Filters Tabs — Popular & Premium */}
+        <div style={{ display: 'flex', gap: '10px', padding: '0 4px 12px 4px' }}>
           {subFilters.map((subFilter) => {
             const isSelected = activeSubFilter === subFilter;
             const isPopularTab = subFilter === 'Popular';
@@ -106,9 +107,9 @@ export default function CategoryProductsPage() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  padding: '14px 20px',
-                  borderRadius: '20px',
+                  gap: '6px',
+                  padding: '12px 14px',
+                  borderRadius: '16px',
                   border: isSelected
                     ? isPopularTab ? '2px solid #E85A1D' : '2px solid #D4AF37'
                     : '1px solid var(--border-color)',
@@ -118,17 +119,17 @@ export default function CategoryProductsPage() {
                   color: isSelected
                     ? isPopularTab ? 'white' : '#D4AF37'
                     : 'var(--text-muted)',
-                  fontSize: '15px',
+                  fontSize: '14px',
                   fontWeight: '800',
                   cursor: 'pointer',
-                  boxShadow: isSelected ? '0 4px 14px rgba(0,0,0,0.15)' : 'none',
+                  boxShadow: isSelected ? '0 4px 12px rgba(0,0,0,0.12)' : 'none',
                   transition: 'all 0.2s ease'
                 }}
               >
                 {isPopularTab ? (
-                  <Flame size={18} style={{ color: isSelected ? 'white' : '#E85A1D' }} />
+                  <Flame size={16} style={{ color: isSelected ? 'white' : '#E85A1D' }} />
                 ) : (
-                  <Crown size={18} style={{ color: '#D4AF37' }} />
+                  <Crown size={16} style={{ color: '#D4AF37' }} />
                 )}
                 <span>{subFilter}</span>
               </button>
@@ -137,16 +138,16 @@ export default function CategoryProductsPage() {
         </div>
 
         {/* Subtitle banner explaining current tab view */}
-        <div style={{ padding: '0 20px 16px 20px' }}>
-          <p style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '600' }}>
+        <div style={{ padding: '0 4px 14px 4px' }}>
+          <p style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '600', lineHeight: '1.4' }}>
             {activeSubFilter === 'Popular'
               ? '🔥 Popular everyday student favorites & fast campus delivery'
               : '👑 Premium chef specialities, feast combos & deluxe portions'}
           </p>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid-responsive" style={{ padding: '0 20px 40px 20px' }}>
+        {/* Products Grid — Responsive */}
+        <div className="grid-responsive" style={{ paddingBottom: '30px' }}>
           {displayedItems.map((item) => {
             const isPremiumItem = activeSubFilter === 'Premium' || item.premium || item.price >= 5000;
 
@@ -156,68 +157,58 @@ export default function CategoryProductsPage() {
                 className="animate-fade-in"
                 style={{
                   backgroundColor: isPremiumItem ? '#1C1C1E' : 'var(--bg-card)',
-                  borderRadius: '24px',
-                  padding: '18px',
+                  borderRadius: '20px',
+                  padding: '14px',
                   display: 'flex',
                   flexDirection: 'column',
-                  boxShadow: isPremiumItem ? '0 6px 20px rgba(0,0,0,0.25)' : 'var(--shadow-sm)',
+                  boxShadow: isPremiumItem ? '0 6px 18px rgba(0,0,0,0.25)' : 'var(--shadow-sm)',
                   border: isPremiumItem ? '1.5px solid #D4AF37' : '1px solid var(--border-color)',
-                  minHeight: '260px',
                   cursor: 'pointer',
                   position: 'relative',
                   overflow: 'hidden',
                   transition: 'transform 0.2s ease, boxShadow 0.2s ease'
                 }}
                 onClick={() => router.push(`/product/${item.id}`)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px)';
-                  e.currentTarget.style.boxShadow = isPremiumItem ? '0 10px 28px rgba(212,175,55,0.25)' : 'var(--shadow-md)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = isPremiumItem ? '0 6px 20px rgba(0,0,0,0.25)' : 'var(--shadow-sm)';
-                }}
               >
                 {/* Badge Header: Popular vs Premium */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '4px' }}>
                   {isPremiumItem ? (
                     <span style={{
-                      backgroundColor: 'linear-gradient(135deg, #D4AF37, #AA7C11)',
-                      background: '#D4AF37',
+                      backgroundColor: '#D4AF37',
                       color: '#1C1C1E',
-                      fontSize: '10px',
+                      fontSize: '9.5px',
                       fontWeight: '900',
-                      padding: '3px 10px',
-                      borderRadius: '12px',
+                      padding: '2px 8px',
+                      borderRadius: '10px',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
-                      letterSpacing: '0.04em',
+                      gap: '3px',
+                      letterSpacing: '0.03em',
                       textTransform: 'uppercase'
                     }}>
-                      <Crown size={11} /> Premium Deluxe
+                      <Crown size={10} /> Premium
                     </span>
                   ) : (
                     <span style={{
                       backgroundColor: 'var(--primary-orange-light)',
                       color: 'var(--primary-orange)',
-                      fontSize: '10px',
+                      fontSize: '9.5px',
                       fontWeight: '800',
-                      padding: '3px 10px',
-                      borderRadius: '12px',
+                      padding: '2px 8px',
+                      borderRadius: '10px',
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '4px',
-                      letterSpacing: '0.04em',
+                      gap: '3px',
+                      letterSpacing: '0.03em',
                       textTransform: 'uppercase'
                     }}>
-                      <Flame size={11} /> Popular Choice
+                      <Flame size={10} /> Popular
                     </span>
                   )}
 
                   {item.unit && (
                     <span style={{
-                      fontSize: '11px',
+                      fontSize: '10.5px',
                       fontWeight: '600',
                       color: isPremiumItem ? '#C8B89A' : 'var(--text-muted)'
                     }}>
@@ -229,14 +220,14 @@ export default function CategoryProductsPage() {
                 {/* Image Box */}
                 <div
                   style={{
-                    height: '110px',
-                    borderRadius: '16px',
+                    height: '90px',
+                    borderRadius: '14px',
                     backgroundColor: isPremiumItem ? 'rgba(255,255,255,0.06)' : 'var(--light-blue-light)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '52px',
-                    marginBottom: '12px',
+                    fontSize: '44px',
+                    marginBottom: '10px',
                     flexShrink: 0
                   }}
                 >
@@ -245,11 +236,11 @@ export default function CategoryProductsPage() {
 
                 {/* Title */}
                 <h4 style={{ 
-                  fontSize: '15px', 
+                  fontSize: '14px', 
                   fontWeight: '800', 
                   color: isPremiumItem ? '#FFFFFF' : 'var(--text-main)', 
                   marginBottom: '4px',
-                  lineHeight: '1.3',
+                  lineHeight: '1.25',
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: 'vertical',
@@ -258,11 +249,11 @@ export default function CategoryProductsPage() {
                   {item.name}
                 </h4>
 
-                {/* Order Description / Portion tag */}
+                {/* Order Description */}
                 <p style={{
-                  fontSize: '12px',
+                  fontSize: '11.5px',
                   color: isPremiumItem ? '#C8B89A' : 'var(--text-muted)',
-                  marginBottom: '12px',
+                  marginBottom: '10px',
                   lineHeight: '1.3',
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
@@ -276,21 +267,25 @@ export default function CategoryProductsPage() {
                 <div style={{
                   marginTop: 'auto',
                   backgroundColor: isPremiumItem ? 'rgba(255,255,255,0.05)' : 'var(--bg-primary)',
-                  borderRadius: '20px',
-                  padding: '8px 12px',
+                  borderRadius: '16px',
+                  padding: '6px 10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  gap: '4px',
                   border: isPremiumItem ? '1px solid rgba(212,175,55,0.3)' : '1px solid var(--border-color)'
                 }}>
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: '9px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.05em', color: isPremiumItem ? '#D4AF37' : 'var(--text-muted)' }}>
-                      {isPremiumItem ? 'PREMIUM PRICE' : 'PRICE'}
+                  <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                    <span style={{ fontSize: '8.5px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.04em', color: isPremiumItem ? '#D4AF37' : 'var(--text-muted)' }}>
+                      PRICE
                     </span>
                     <span style={{
-                      fontSize: '16px',
+                      fontSize: '14.5px',
                       fontWeight: '900',
-                      color: isPremiumItem ? '#E2C06E' : 'var(--primary-orange)'
+                      color: isPremiumItem ? '#E2C06E' : 'var(--primary-orange)',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis'
                     }}>
                       ₦{item.price.toLocaleString()}
                     </span>
@@ -302,8 +297,8 @@ export default function CategoryProductsPage() {
                       addToCart(item, storeId);
                     }}
                     style={{
-                      width: '36px',
-                      height: '36px',
+                      width: '32px',
+                      height: '32px',
                       borderRadius: '50%',
                       backgroundColor: isPremiumItem ? '#D4AF37' : 'var(--primary-orange)',
                       color: isPremiumItem ? '#1C1C1E' : 'white',
@@ -312,14 +307,11 @@ export default function CategoryProductsPage() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       cursor: 'pointer',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                      flexShrink: 0,
-                      transition: 'transform 0.15s ease'
+                      boxShadow: '0 2px 6px rgba(0,0,0,0.18)',
+                      flexShrink: 0
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                   >
-                    <Plus size={18} />
+                    <Plus size={16} />
                   </button>
                 </div>
               </div>

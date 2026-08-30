@@ -188,22 +188,35 @@ html, body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 20px 80px 20px;
+  padding: 24px 20px 100px 20px;
   display: flex;
   flex-direction: column;
 }
 
-/* Responsive Grids for Desktop PC Screen */
+@media (max-width: 768px) {
+  .app-content {
+    padding: 16px 12px 110px 12px !important;
+  }
+}
+
+/* Responsive Grids for Desktop PC & Mobile Screens */
 .grid-responsive {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 24px;
+  gap: 20px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .grid-responsive {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }
 
@@ -216,6 +229,7 @@ html, body {
 @media (max-width: 768px) {
   .grid-2 {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 }
 
@@ -227,6 +241,13 @@ html, body {
   border-bottom-left-radius: var(--radius-lg);
   border-bottom-right-radius: var(--radius-lg);
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .header-orange {
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+  }
 }
 
 .header-orange-text {
