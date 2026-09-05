@@ -163,10 +163,10 @@ export const Navbar: React.FC = () => {
           {/* Logo */}
           <Link href="/" className="navbar-logo-link" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
             <Image
-              src="/droply-logo.png"
-              alt="Droply — Food. Fast. Campus."
-              width={130}
-              height={52}
+              src={theme === 'dark' ? '/droply-logo-dark.png' : '/droply-logo.png'}
+              alt="Droply Logo"
+              width={140}
+              height={36}
               className="navbar-logo"
               style={{ objectFit: 'contain' }}
               priority

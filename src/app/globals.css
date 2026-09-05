@@ -306,7 +306,7 @@ html, body {
 
 /* Navbar Logo */
 .navbar-logo {
-  height: 44px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   transition: transform 0.2s ease;
@@ -315,9 +315,7 @@ html, body {
   transform: scale(1.03);
 }
 
-[data-theme="dark"] .navbar-logo {
-  filter: none;
-}
+
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
