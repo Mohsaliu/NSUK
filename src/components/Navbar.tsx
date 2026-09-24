@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   Search, ShoppingBag, MapPin, ChevronDown,
-  Home, Grid, Store, Sun, Moon, Menu, X, User
+  Home, Grid, Store, Sun, Moon, Menu, X
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
@@ -16,7 +16,13 @@ export const Navbar: React.FC = () => {
   const { cart, user, theme, toggleTheme } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [prevPath, setPrevPath] = useState(pathname);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    setMenuOpen(false);
+  }
 
   const totalCartItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -53,15 +59,12 @@ export const Navbar: React.FC = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  // Close on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
-
   return (
     <header className="desktop-navbar">
       <div className="navbar-inner">
 
         {/* ── LEFT: Hamburger (mobile) + Logo + Location ── */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div className="navbar-left-section">
 
           {/* Hamburger — only visible on mobile via CSS */}
           <div ref={menuRef} style={{ position: 'relative' }}>
@@ -196,7 +199,7 @@ export const Navbar: React.FC = () => {
         </form>
 
         {/* ── RIGHT: Desktop nav links + icons ── */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div className="navbar-right-section">
 
           {/* Desktop nav links — hidden on mobile */}
           <nav className="desktop-nav-links">
